@@ -6,9 +6,17 @@
       <h5 class="align-self-center mt-1 ml-2">E-studieses</h5>
     </div>
 
-    <div class="sign-in-display-container text-left pt-3">
-      <h5>Sign In</h5>
-      <p class="text-muted">Please sign in first to access all features</p>
+    <div v-if="signIn" class="sign-in-true">
+        <div class="sign-in-display-container text-left pt-3">
+            <h5>Sign In</h5>
+            <p class="text-muted">Please sign in first to access all features</p>
+        </div>
+    </div>
+    <div v-else>
+        <div class="sign-in-display-container text-left pt-3">
+            <h5>Sign Up</h5>
+            <p class="text-muted">Please sign up first to access all features</p>
+        </div>
     </div>
 
     <div class="btn-container text-center">
@@ -61,7 +69,7 @@
               class="form-check-input checkbox"
               id="rememberMe"
             />
-            &nbsp; Keep me Sign In
+            &nbsp; Keep me Signed In
           </label>
         </div>
         <div class="forgot mt-3">
@@ -69,13 +77,22 @@
         </div>
       </div>
 
-      <div class="btn-container">
+      <div v-if="signIn" class="btn-container">
         <button class="btn btn-primary btn-block p-2 mt-2">Sign In</button>
       </div>
+
+      <div v-else class="btn-container">
+        <button class="btn btn-primary btn-block p-2 mt-2">Sign Up</button>
+      </div>
+
     </form>
 
-    <div>
-        <p>Don't Hava Account? <a class="text-primary" href="#">Sign Up</a> </p>
+    <div v-if="signIn">
+        <p>Don't Hava Account? <button v-on:click="signInToggle" class="btn sign-in-btn">Sign Up</button></p>
+    </div>
+
+    <div v-else>
+        <p>Already Hava Account? <button v-on:click="signInToggle" class="btn sign-in-btn">Sign In</button></p>
     </div>
   </div>
 </div>
@@ -85,6 +102,19 @@
 export default {
   name: "SignIn",
   components: {},
+  data() {
+      return {
+          signIn: true
+      }
+  },
+
+  methods: {
+      signInToggle() {
+        const temp = this.signIn 
+        this.signIn = !temp
+        console.log('Done');
+      }
+  }
 };
 </script>
 
@@ -125,6 +155,15 @@ export default {
   width: 150px;
   height: 0.5px;
   background: #888;
+  margin-bottom: 8px;
+}
+
+.sign-in-btn:active {
+  border: none;
+}
+
+.sign-in-btn:focus {
+  border: none;
 }
 
 .checkbox {
