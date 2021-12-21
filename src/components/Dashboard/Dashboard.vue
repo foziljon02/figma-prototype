@@ -1,49 +1,50 @@
 <template>
-  <div>
+  <div class="dashboard m-0 p-0">
+    <main-template currentPage="Dashboard">
     <UpgradeOffer />
+      <div class="dashboard-main">
+        <div class="courses-in-progress">
+          <SectionLine text="Courses in Progress" link="#" />
 
-    <div class="dashboard-main">
-      <div class="courses-in-progress">
-        <SectionLine text="Courses in Progress" link="#" />
+          <div class="row mr-0 ml-0 d-flex justify-content-between">
+            <div
+              v-for="course in coursesInProgress"
+              v-bind:key="course.id"
+              class="card col-4 my-col-4"
+              style="font-size: 1rem"
+            >
+              <CourseCard :course="course" />
+            </div>
+          </div>
+        </div>
 
-        <div class="row mr-0 ml-0 d-flex justify-content-between">
-          <div
-            v-for="course in coursesInProgress"
-            v-bind:key="course.id"
-            class="card col-4 my-col-4"
-            style="font-size: 1rem"
-          >
-            <CourseCard :course="course" />
+        <div class="popular-catagories">
+          <div>
+            <SectionLine text="Popular Catagories" link="#" />
+          </div>
+
+          <div class="row mr-0 ml-0 d-flex justify-content-between">
+            <div
+              v-for="course in popularCatagories"
+              :key="course.id"
+              class="card col-4 my-col-4"
+            >
+              <CatagoryCard :data="course" />
+            </div>
+          </div>
+        </div>
+
+        <div class="top-mentors">
+          <div>
+            <SectionLine text="Top Mentors" link="#" />
+          </div>
+
+          <div v-for="mentor in mentors" :key="mentor.id" class="mentors-cards">
+            <Mentor class="mb-2" :mentor="mentor" />
           </div>
         </div>
       </div>
-
-      <div class="popular-catagories">
-        <div>
-          <SectionLine text="Popular Catagories" link="#" />
-        </div>
-
-        <div class="row mr-0 ml-0 d-flex justify-content-between">
-          <div
-            v-for="course in popularCatagories"
-            :key="course.id"
-            class="card col-4 my-col-4"
-          >
-            <CatagoryCard :data="course" />
-          </div>
-        </div>
-      </div>
-
-      <div class="top-mentors">
-        <div>
-          <SectionLine text="Top Mentors" link="#" />
-        </div>
-
-        <div v-for="mentor in mentors" :key="mentor.id" class="mentors-cards">
-          <Mentor class="mb-2" :mentor="mentor" />
-        </div>
-      </div>
-    </div>
+    </main-template>
   </div>
 </template>
 
@@ -59,6 +60,7 @@ import dimond from "../../assets/dimond.png";
 import laravel from "../../assets/laravel.png";
 import bootstrap from "../../assets/bootstrap.png";
 import react from "../../assets/react.png";
+import MainTemplate from "../MainTemplate/MainTemplate.vue";
 
 export default {
   name: "Dashboard",
@@ -68,6 +70,7 @@ export default {
     CatagoryCard,
     Mentor,
     UpgradeOffer,
+    MainTemplate,
   },
   data() {
     return {

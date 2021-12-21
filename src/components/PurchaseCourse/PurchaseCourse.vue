@@ -1,110 +1,112 @@
 <template>
   <div>
-    <div
-      class="my-courses-nav d-flex align-items-center justify-content-between"
-    >
-      <p class="text-blue">
-        Purchase Courses for <span class="font-weight-bold">"All Courses"</span>
-      </p>
-      <div class="my-course-nav-right d-flex align-items-center">
-        <p
-          class="text-muted d-flex align-items-center bg-white pl-2 pr-2 rounded"
-        >
-          Sort By:
-          <span class="font-weight-bold text-dark p-2">
-            <select
-              class="my-form-control-nav ml-2 font-weight-bold text-dark my-select"
-              id="exampleFormControlSelect2"
-            >
-              <option>All Catagories</option>
-              <option>Popular</option>
-              <option>Trending</option>
-            </select>
-          </span>
-        </p>
-        <button class="btn my-courses-icon-inactive bg-white ml-3 mr-3">
-          <i class="fas fa-filter"></i>
-        </button>
-        <button
-          v-on:click="list = true"
-          :class="[
-            list
-              ? 'my-courses-icon-active'
-              : 'my-courses-icon-inactive bg-white',
-            'btn',
-          ]"
-        >
-          <i class="fas fa-bars"></i>
-        </button>
-        <button
-          v-on:click="list = false"
-          :class="[
-            list
-              ? 'my-courses-icon-inactive bg-white'
-              : 'my-courses-icon-active',
-            'btn',
-          ]"
-        >
-          <i class="fab fa-microsoft"></i>
-        </button>
-      </div>
-    </div>
-
-    <div class="purchase-courses row mt-4">
+    <main-template currentPage="Purchase Courses">
       <div
-        class="course-card card col-3 my-col-3 p-0 pb-2"
-        v-for="course in courses"
-        :key="course.id"
+        class="my-courses-nav d-flex align-items-center justify-content-between"
       >
-        <div class="course-background rounded pt-2">
-          <div class="card-body">
-            <div class="course-background-elements d-flex">
-              <div
-                class="icon d-flex align-items-center justify-content-center"
+        <p class="text-blue">
+          Purchase Courses for
+          <span class="font-weight-bold">"All Courses"</span>
+        </p>
+        <div class="my-course-nav-right d-flex align-items-center">
+          <p
+            class="text-muted d-flex align-items-center bg-white pl-2 pr-2 rounded"
+          >
+            Sort By:
+            <span class="font-weight-bold text-dark p-2">
+              <select
+                class="my-form-control-nav ml-2 font-weight-bold text-dark my-select"
+                id="exampleFormControlSelect2"
               >
-                <img width="40" :src="course.technology.icon" alt="icon" />
+                <option>All Catagories</option>
+                <option>Popular</option>
+                <option>Trending</option>
+              </select>
+            </span>
+          </p>
+          <button class="btn my-courses-icon-inactive bg-white ml-3 mr-3">
+            <i class="fas fa-filter"></i>
+          </button>
+          <button
+            v-on:click="list = true"
+            :class="[
+              list
+                ? 'my-courses-icon-active'
+                : 'my-courses-icon-inactive bg-white',
+              'btn',
+            ]"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <button
+            v-on:click="list = false"
+            :class="[
+              list
+                ? 'my-courses-icon-inactive bg-white'
+                : 'my-courses-icon-active',
+              'btn',
+            ]"
+          >
+            <i class="fab fa-microsoft"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="purchase-courses row mt-4">
+        <div
+          class="course-card card col-3 my-col-3 p-0 pb-2"
+          v-for="course in courses"
+          :key="course.id"
+        >
+          <div class="course-background rounded pt-2">
+            <div class="card-body">
+              <div class="course-background-elements d-flex">
+                <div
+                  class="icon d-flex align-items-center justify-content-center"
+                >
+                  <img width="40" :src="course.technology.icon" alt="icon" />
+                </div>
+                <h4 class="card-title mb-2">
+                  {{ course.name }}
+                </h4>
               </div>
-              <h4 class="card-title mb-2">
+            </div>
+
+            <div class="card-bottom p-3">
+              <h5 class="card-title">
                 {{ course.name }}
-              </h4>
-            </div>
-          </div>
+              </h5>
 
-          <div class="card-bottom p-3">
-            <h5 class="card-title">
-              {{ course.name }}
-            </h5>
-
-            <div class="instructor d-flex align-items-center pt-2">
-              <img width="40" :src="course.instructor.img" alt="instructor" />
-              <h6 class="ml-3">{{ course.instructor.name }}</h6>
-            </div>
-
-            <div class="d-flex justify-content-between mt-3">
-              <div class="ratings text-yellow">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
+              <div class="instructor d-flex align-items-center pt-2">
+                <img width="40" :src="course.instructor.img" alt="instructor" />
+                <h6 class="ml-3">{{ course.instructor.name }}</h6>
               </div>
 
-              <div
-                :class="[
-                  course.id % 2 == 0
-                    ? 'text-danger text-bg-red-dim'
-                    : 'text-blue text-bg-blue-dim',
-                  'price',
+              <div class="d-flex justify-content-between mt-3">
+                <div class="ratings text-yellow">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
 
-                ]"
-              >
-                ${{ course.price }}
+                <div
+                  :class="[
+                    course.id % 2 == 0
+                      ? 'text-danger text-bg-red-dim'
+                      : 'text-blue text-bg-blue-dim',
+                    'price',
+                  ]"
+                >
+                  ${{ course.price }}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </main-template>
   </div>
 </template>
 
@@ -113,8 +115,10 @@ import angular from "../../assets/angular.png";
 import react from "../../assets/react.png";
 import dimond from "../../assets/dimond.png";
 import logo from "../../assets/logo.png";
+import MainTemplate from "../MainTemplate/MainTemplate.vue";
 
 export default {
+  components: { MainTemplate },
   name: "PusrchaseCourse",
   data() {
     return {

@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <SignIn />
-    <main-template currentPage="Dashboard"><Dashboard /></main-template>
-    <main-template currentPage="My Courses"><MyCourses /></main-template>
+    <!-- <SignIn /> -->
+    <router-view></router-view>
+    <!-- <main-template currentPage="My Courses"><MyCourses /></main-template>
     <main-template currentPage="My Courses" currentRoute='/ Web Development'><CourseDetails /></main-template>
     <main-template currentPage="Purchase Courses"> <PurchaseCourse /> </main-template>
     <main-template currentPage="eBook"> <EBooks /> </main-template>
@@ -10,40 +10,40 @@
     <main-template currentPage="Copmleted Courses"> <CompletedCourses /> </main-template>
     <main-template currentPage="Code Challenges"> <CodeChallenge /> </main-template>
     <main-template currentPage="Community"> <Community /> </main-template>
-    <main-template currentPage="Profile"><Profile /> </main-template>
+    <main-template currentPage="Profile"><Profile /> </main-template> -->
   </div>
 </template>
 
 // <script>
-import MainTemplate from './components/MainTemplate/MainTemplate.vue'
-import SignIn from './components/SignIn/SignIn.vue'
-import Dashboard from "./components/Dashboard/Dashboard.vue";
-import MyCourses from './components/MyCourses/MyCourses.vue';
-import CourseDetails from './components/CourseDetails/CourseDetails.vue';
-import PurchaseCourse from './components/PurchaseCourse/PurchaseCourse.vue';
-import EBooks from './components/Ebooks/EBooks.vue';
-import EbookDetail from './components/Ebooks/EbookDetail.vue';
-import CompletedCourses from './components/CompletedCourses/CompletedCourses.vue';
-import CodeChallenge from './components/CodeChallenge/CodeChallenge.vue';
-import Community from './components/Community/Community.vue';
-import Profile from './components/Profile/Profile.vue';
+// import MainTemplate from './components/MainTemplate/MainTemplate.vue'
+// import SignIn from './components/SignIn/SignIn.vue'
+// import Dashboard from "./components/Dashboard/Dashboard.vue";
+// import MyCourses from './components/MyCourses/MyCourses.vue';
+// import CourseDetails from './components/CourseDetails/CourseDetails.vue';
+// import PurchaseCourse from './components/PurchaseCourse/PurchaseCourse.vue';
+// import EBooks from './components/Ebooks/EBooks.vue';
+// import EbookDetail from './components/Ebooks/EbookDetail.vue';
+// import CompletedCourses from './components/CompletedCourses/CompletedCourses.vue';
+// import CodeChallenge from './components/CodeChallenge/CodeChallenge.vue';
+// import Community from './components/Community/Community.vue';
+// import Profile from './components/Profile/Profile.vue';
 
 export default {
   name: "App",
-  components: {
-    SignIn,
-    Dashboard,
-    MainTemplate,
-    MyCourses,
-    CourseDetails,
-    PurchaseCourse,
-    EBooks,
-    EbookDetail,
-    CompletedCourses,
-    CodeChallenge,
-    Community,
-    Profile,
-  },
+  // components: {
+  //   SignIn,
+  //   Dashboard,
+  //   MainTemplate,
+  //   MyCourses,
+  //   CourseDetails,
+  //   PurchaseCourse,
+  //   EBooks,
+  //   EbookDetail,
+  //   CompletedCourses,
+  //   CodeChallenge,
+  //   Community,
+  //   Profile,
+  // },
   data() {
     return {
       name: "John",
@@ -57,7 +57,7 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 p {
@@ -70,6 +70,7 @@ body {
 
 .btn-blue {
   background-color:#2F3CED;
+  color: #fff;
 }
 
 .btn-blue:hover {

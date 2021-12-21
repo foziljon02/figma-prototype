@@ -1,349 +1,370 @@
 <template>
   <div class="profile">
-    <div class="course-details-nav-sections">
-      <div class="my-navbar d-flex mb-3">
-        <p
-          v-on:click="turnCourses()"
-          :class="[courses ? 'current-nav' : '', 'my-nav-item text-center']"
-        >
-          Courses
-        </p>
-        <p
-          v-on:click="turnDiscussions()"
-          :class="[discussions ? 'current-nav' : '', 'my-nav-item text-center']"
-        >
-          Discussions
-        </p>
-        <p
-          v-on:click="turnChallenges()"
-          :class="[challenges ? 'current-nav' : '', 'my-nav-item text-center']"
-        >
-          Challenges
-        </p>
-        <p
-          v-on:click="turnMyAccount()"
-          :class="[myAccount ? 'current-nav' : '', 'my-nav-item text-center']"
-        >
-          My Account
-        </p>
-      </div>
-      <div class="row">
-        <div class="col-9">
-          <!-- courses START -->
-          <div v-if="courses"></div>
-          <!-- courses END -->
+    <main-template currentPage="Profile">
+      <div class="course-details-nav-sections">
+        <div class="my-navbar d-flex mb-3">
+          <p
+            v-on:click="turnCourses()"
+            :class="[courses ? 'current-nav' : '', 'my-nav-item text-center']"
+          >
+            Courses
+          </p>
+          <p
+            v-on:click="turnDiscussions()"
+            :class="[
+              discussions ? 'current-nav' : '',
+              'my-nav-item text-center',
+            ]"
+          >
+            Discussions
+          </p>
+          <p
+            v-on:click="turnChallenges()"
+            :class="[
+              challenges ? 'current-nav' : '',
+              'my-nav-item text-center',
+            ]"
+          >
+            Challenges
+          </p>
+          <p
+            v-on:click="turnMyAccount()"
+            :class="[myAccount ? 'current-nav' : '', 'my-nav-item text-center']"
+          >
+            My Account
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-9">
+            <!-- courses START -->
+            <div v-if="courses"></div>
+            <!-- courses END -->
 
-          <!-- discussions START -->
-          <div v-else-if="discussions">
-            <div
-              class="card comment-card mb-3"
-              v-for="comment in comments"
-              :key="comment.id"
-            >
-              <div class="card-body d-flex">
-                <div>
-                  <img
-                    width="40"
-                    height="40"
-                    class="rounded-circle"
-                    :src="comment.img"
-                    alt="instructor"
-                  />
-                </div>
-
-                <div class="ml-3" style="width: 100%">
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div>
-                      <h6 class="card-title m-0">{{ comment.name }}</h6>
-                      <small class="text-muted mt-0"
-                        >Asked {{ comment.time }}m ago</small
-                      >
-                    </div>
-
-                    <div>
-                      <p class="text-danger text-bg-red-dim p-1 rounded">
-                        {{ comment.field }}
-                      </p>
-                    </div>
+            <!-- discussions START -->
+            <div v-else-if="discussions">
+              <div
+                class="card comment-card mb-3"
+                v-for="comment in comments"
+                :key="comment.id"
+              >
+                <div class="card-body d-flex">
+                  <div>
+                    <img
+                      width="40"
+                      height="40"
+                      class="rounded-circle"
+                      :src="comment.img"
+                      alt="instructor"
+                    />
                   </div>
 
-                  <div>
-                    <h6 class="card-title mt-3">
-                      {{ comment.title }}
-                    </h6>
-
-                    <p class="card-text text-muted">
-                      {{ comment.text }}
-                    </p>
-
+                  <div class="ml-3" style="width: 100%">
                     <div
                       class="d-flex justify-content-between align-items-center"
                     >
-                      <div class="d-flex align-items-center mt-4">
-                        <button
-                          v-on:click="comment.likes++"
-                          :class="[
-                            comment.likes > 0 ? 'btn-blue' : 'btn-light',
-                            'btn circle-border mr-3',
-                          ]"
+                      <div>
+                        <h6 class="card-title m-0">{{ comment.name }}</h6>
+                        <small class="text-muted mt-0"
+                          >Asked {{ comment.time }}m ago</small
                         >
-                          <i class="far fa-thumbs-up text-white"></i>
-                        </button>
-                        <p
-                          class="text-blue mr-3 text-center"
-                          style="width: 30px"
-                        >
-                          {{ comment.likes }}
-                        </p>
-                        <button
-                          v-on:click="comment.likes--"
-                          :class="[
-                            comment.likes < 0 ? 'btn-danger' : 'btn-light',
-                            'btn circle-border',
-                          ]"
-                        >
-                          <i class="far fa-thumbs-down text-white"></i>
-                        </button>
                       </div>
 
-                      <div class="d-flex">
-                        <p class="text-muted mr-4">
-                          <i class="fas fa-eye"></i> {{ comment.views }} views
+                      <div>
+                        <p class="text-danger text-bg-red-dim p-1 rounded">
+                          {{ comment.field }}
                         </p>
-                        <p class="text-muted">
-                          <i class="far fa-comment-dots"></i>
-                          {{ comment.comments }} comments
-                        </p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h6 class="card-title mt-3">
+                        {{ comment.title }}
+                      </h6>
+
+                      <p class="card-text text-muted">
+                        {{ comment.text }}
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="d-flex align-items-center mt-4">
+                          <button
+                            v-on:click="comment.likes++"
+                            :class="[
+                              comment.likes > 0 ? 'btn-blue' : 'btn-light',
+                              'btn circle-border mr-3',
+                            ]"
+                          >
+                            <i class="far fa-thumbs-up text-white"></i>
+                          </button>
+                          <p
+                            class="text-blue mr-3 text-center"
+                            style="width: 30px"
+                          >
+                            {{ comment.likes }}
+                          </p>
+                          <button
+                            v-on:click="comment.likes--"
+                            :class="[
+                              comment.likes < 0 ? 'btn-danger' : 'btn-light',
+                              'btn circle-border',
+                            ]"
+                          >
+                            <i class="far fa-thumbs-down text-white"></i>
+                          </button>
+                        </div>
+
+                        <div class="d-flex">
+                          <p class="text-muted mr-4">
+                            <i class="fas fa-eye"></i> {{ comment.views }} views
+                          </p>
+                          <p class="text-muted">
+                            <i class="far fa-comment-dots"></i>
+                            {{ comment.comments }} comments
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <!-- discussions END -->
+
+            <!-- challenges START  -->
+            <div v-else-if="challenges"></div>
+            <!-- challenges END -->
+
+            <!-- myAccount START -->
+            <div v-else-if="myAccount">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Basic Information</h4>
+
+                  <form>
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        aria-describedby="nameHelp"
+                        v-model="user.firstName"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email (Required)</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        v-model="user.email"
+                      />
+                      <small id="emailHelp" class="form-text text-muted"
+                        >We'll never share your email with anyone else.</small
+                      >
+                    </div>
+
+                    <div class="form-group">
+                      <label for="username">Username (Required)</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="username"
+                        v-model="user.username"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="country">Country</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="country"
+                        v-model="user.country"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="website">Website</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="website"
+                        v-model="user.website"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="instagram">Instagram</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="instagram"
+                        v-model="user.instagram"
+                      />
+                    </div>
+
+                    <button type="button" class="btn btn-blue text-white">
+                      Update My Profile
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- myAccount END -->
           </div>
-          <!-- discussions END -->
 
-          <!-- challenges START  -->
-          <div v-else-if="challenges"></div>
-          <!-- challenges END -->
-
-          <!-- myAccount START -->
-          <div v-else-if="myAccount">
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title">Basic Information</h4>
-
-                <form>
-                  <div class="form-group">
-                    <label for="name">Name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="name"
-                      aria-describedby="nameHelp"
-                      v-model="user.firstName"
+          <div class="col-3">
+            <template v-if="!myAccount">
+              <div class="card">
+                <img class="profile-dec" :src="blueShape" alt="" />
+                <div class="card-body">
+                  <h6 class="my-account">My Profile</h6>
+                  <div class="d-flex flex-column align-items-center">
+                    <img
+                      width="70"
+                      height="70"
+                      class="circle-border d-flex"
+                      :src="profile"
+                      alt="profile"
                     />
+                    <p class="font-weight-bold mt-4">{{ comments[0].name }}</p>
+                    <p class="text-muted mt-2">London United Kingdom</p>
+                    <div>
+                      <i class="fab fa-instagram text-muted"></i>
+                      <i class="fab fa-dribbble text-muted"></i>
+                    </div>
                   </div>
 
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email (Required)</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="exampleInputEmail1"
-                      v-model="user.email"
-                    />
-                    <small id="emailHelp" class="form-text text-muted"
-                      >We'll never share your email with anyone else.</small
+                  <div>
+                    <div
+                      class="d-flex justify-content-between align-items-center mt-4"
+                    >
+                      <h6 class="mb-0">703 Badges</h6>
+                      <i class="fas fa-certificate gold"></i>
+                    </div>
+
+                    <div
+                      class="d-flex justify-content-between align-items-center mt-3"
+                    >
+                      <h6 class="mb-0">610 Badges</h6>
+                      <i class="fas fa-certificate silver"></i>
+                    </div>
+
+                    <div
+                      class="d-flex justify-content-between align-items-center mt-3"
+                    >
+                      <h6 class="mb-0">484 Badges</h6>
+                      <i class="fas fa-certificate bronze"></i>
+                    </div>
+
+                    <button class="btn btn-blue btn-block text-white mt-4">
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card mt-4">
+                <div class="card-body">
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <h6 class="card-title mb-0">User Information</h6>
+                    <button class="btn btn-blue text-white pt-1 pb-1 pl-2 pr-2">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+
+                  <div class="education mt-5">
+                    <div class="d-flex justify-content-between mb-3">
+                      <h6 class="card-title mb-0">Education</h6>
+                      <h6 class="card-title mb-0 text-blue">Add New</h6>
+                    </div>
+
+                    <h6 class="card-title">B.Cs - Information Engineering</h6>
+                    <small class="text-muted"
+                      >University of London United Kingdom 2018</small
                     >
                   </div>
 
-                  <div class="form-group">
-                    <label for="username">Username (Required)</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="username"
-                      v-model="user.username"
-                    />
+                  <div class="certification mt-4">
+                    <div class="d-flex justify-content-between mb-3">
+                      <h6 class="card-title mb-0">Certification</h6>
+                      <h6 class="card-title mb-0 text-blue">Add New</h6>
+                    </div>
+                    <small class="text-muted">Add your Certification</small>
                   </div>
-
-                  <div class="form-group">
-                    <label for="country">Country</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="country"
-                      v-model="user.country"
-                    />
-                  </div>
-
-                  <div class="form-group">
-                    <label for="website">Website</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="website"
-                      v-model="user.website"
-                    />
-                  </div>
-
-                  <div class="form-group">
-                    <label for="instagram">Instagram</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="instagram"
-                      v-model="user.instagram"
-                    />
-                  </div>
-
-                  <button type="button" class="btn btn-blue text-white">
-                    Update My Profile
-                  </button>
-                </form>
+                </div>
               </div>
-            </div>
+            </template>
+
+            <template v-else>
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title mb-4">My Sttings</h4>
+                  <h6
+                    v-on:click="turnSubMenus('basic')"
+                    :class="[basicInfo ? 'text-blue' : '', 'card-title mt-5']"
+                  >
+                    Basic Information
+                  </h6>
+                  <h6
+                    v-on:click="turnSubMenus('password')"
+                    :class="[
+                      changePassword ? 'text-blue' : '',
+                      'card-title mt-4',
+                    ]"
+                  >
+                    Change Password
+                  </h6>
+                  <h6
+                    v-on:click="turnSubMenus('mail')"
+                    :class="[
+                      mailSettings ? 'text-blue' : '',
+                      'card-title mt-4',
+                    ]"
+                  >
+                    Mail Settings
+                  </h6>
+                  <h6
+                    v-on:click="turnSubMenus('linked')"
+                    :class="[
+                      linkedAccounts ? 'text-blue' : '',
+                      'card-title mt-4',
+                    ]"
+                  >
+                    Linked Accounts
+                  </h6>
+                  <h6
+                    v-on:click="turnSubMenus('delete')"
+                    :class="[
+                      deleteAccounts ? 'text-blue' : '',
+                      'card-title mt-4',
+                    ]"
+                  >
+                    Delete Accounts
+                  </h6>
+                </div>
+              </div>
+            </template>
           </div>
-          <!-- myAccount END -->
-        </div>
-
-        <div class="col-3">
-          <template v-if="!myAccount">
-            <div class="card">
-              <img class="profile-dec" :src="blueShape" alt="" />
-              <div class="card-body">
-                <h6 class="my-account">My Profile</h6>
-                <div class="d-flex flex-column align-items-center">
-                  <img
-                    width="70"
-                    height="70"
-                    class="circle-border d-flex"
-                    :src="profile"
-                    alt="profile"
-                  />
-                  <p class="font-weight-bold mt-4">{{ comments[0].name }}</p>
-                  <p class="text-muted mt-2">London United Kingdom</p>
-                  <div>
-                    <i class="fab fa-instagram text-muted"></i>
-                    <i class="fab fa-dribbble text-muted"></i>
-                  </div>
-                </div>
-
-                <div>
-                  <div
-                    class="d-flex justify-content-between align-items-center mt-4"
-                  >
-                    <h6 class="mb-0">703 Badges</h6>
-                    <i class="fas fa-certificate gold"></i>
-                  </div>
-
-                  <div
-                    class="d-flex justify-content-between align-items-center mt-3"
-                  >
-                    <h6 class="mb-0">610 Badges</h6>
-                    <i class="fas fa-certificate silver"></i>
-                  </div>
-
-                  <div
-                    class="d-flex justify-content-between align-items-center mt-3"
-                  >
-                    <h6 class="mb-0">484 Badges</h6>
-                    <i class="fas fa-certificate bronze"></i>
-                  </div>
-
-                  <button class="btn btn-blue btn-block text-white mt-4">
-                    Edit
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="card mt-4">
-              <div class="card-body">
-                <div class="d-flex align-items-center justify-content-between">
-                  <h6 class="card-title mb-0">User Information</h6>
-                  <button class="btn btn-blue text-white pt-1 pb-1 pl-2 pr-2">
-                    <i class="fas fa-plus"></i>
-                  </button>
-                </div>
-
-                <div class="education mt-5">
-                  <div class="d-flex justify-content-between mb-3">
-                    <h6 class="card-title mb-0">Education</h6>
-                    <h6 class="card-title mb-0 text-blue">Add New</h6>
-                  </div>
-
-                  <h6 class="card-title">B.Cs - Information Engineering</h6>
-                  <small class="text-muted"
-                    >University of London United Kingdom 2018</small
-                  >
-                </div>
-
-                <div class="certification mt-4">
-                  <div class="d-flex justify-content-between mb-3">
-                    <h6 class="card-title mb-0">Certification</h6>
-                    <h6 class="card-title mb-0 text-blue">Add New</h6>
-                  </div>
-                  <small class="text-muted">Add your Certification</small>
-                </div>
-              </div>
-            </div>
-          </template>
-
-          <template v-else>
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title mb-4">My Sttings</h4>
-                <h6
-                  v-on:click="turnSubMenus('basic')"
-                  :class="[basicInfo ? 'text-blue' : '', 'card-title mt-5']"
-                >
-                  Basic Information
-                </h6>
-                <h6
-                  v-on:click="turnSubMenus('password')"
-                  :class="[
-                    changePassword ? 'text-blue' : '',
-                    'card-title mt-4',
-                  ]"
-                >
-                  Change Password
-                </h6>
-                <h6 v-on:click="turnSubMenus('mail')" :class="[
-                    mailSettings ? 'text-blue' : '',
-                    'card-title mt-4',
-                  ]">
-                  Mail Settings
-                </h6>
-                <h6 v-on:click="turnSubMenus('linked')" :class="[
-                    linkedAccounts ? 'text-blue' : '',
-                    'card-title mt-4',
-                  ]">
-                  Linked Accounts
-                </h6>
-                <h6 v-on:click="turnSubMenus('delete')" :class="[
-                    deleteAccounts ? 'text-blue' : '',
-                    'card-title mt-4',
-                  ]">
-                  Delete Accounts
-                </h6>
-              </div>
-            </div>
-          </template>
         </div>
       </div>
-    </div>
+    </main-template>
   </div>
 </template>
 
 <script>
 import blueShape from "../../assets/blueShape.png";
 import profile from "../../assets/profile.png";
+import MainTemplate from "../MainTemplate/MainTemplate.vue";
 
 export default {
+  components: { MainTemplate },
   name: "Profile",
   data() {
     return {

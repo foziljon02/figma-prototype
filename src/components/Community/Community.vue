@@ -1,215 +1,284 @@
 <template>
   <div>
-    <div class="community-nav d-flex justify-content-between mb-5">
-      <p class="text-blue ml-1">
-        All Discussions <span class="font-weight-bold">"18.000 Questions"</span>
-      </p>
-      <div class="d-flex">
-        <p class="ml-5">Latest</p>
-        <p class="ml-5">Unanswered</p>
-        <p class="ml-5">Trending</p>
-        <p class="ml-5">Popular This Week</p>
-        <p class="ml-5">Popular This Month</p>
+    <main-template currentPage="Community">
+      <div class="community-nav d-flex justify-content-between mb-5">
+        <p class="text-blue ml-1">
+          All Discussions
+          <span class="font-weight-bold">"18.000 Questions"</span>
+        </p>
+        <div class="d-flex">
+          <p class="ml-5">Latest</p>
+          <p class="ml-5">Unanswered</p>
+          <p class="ml-5">Trending</p>
+          <p class="ml-5">Popular This Week</p>
+          <p class="ml-5">Popular This Month</p>
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-8">
-        <div
-          class="card comment-card mb-3"
-          v-for="comment in comments"
-          :key="comment.id"
-        >
-          <div class="card-body d-flex">
-            <div>
-              <img
-                width="40"
-                height="40"
-                class="rounded-circle"
-                :src="comment.img"
-                alt="instructor"
-              />
-            </div>
-
-            <div class="ml-3" style="width: 100%">
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <h6 class="card-title m-0">{{ comment.name }}</h6>
-                  <small class="text-muted mt-0"
-                    >Asked {{ comment.time }}m ago</small
-                  >
-                </div>
-
-                <div>
-                  <p class="text-danger text-bg-red-dim p-1 rounded">{{ comment.field }}</p>
-                </div>
+      <div class="row">
+        <div class="col-8">
+          <div
+            class="card comment-card mb-3"
+            v-for="comment in comments"
+            :key="comment.id"
+          >
+            <div class="card-body d-flex">
+              <div>
+                <img
+                  width="40"
+                  height="40"
+                  class="rounded-circle"
+                  :src="comment.img"
+                  alt="instructor"
+                />
               </div>
 
-              <div>
-                <h6 class="card-title mt-3">
-                  {{ comment.title }}
-                </h6>
+              <div class="ml-3" style="width: 100%">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h6 class="card-title m-0">{{ comment.name }}</h6>
+                    <small class="text-muted mt-0"
+                      >Asked {{ comment.time }}m ago</small
+                    >
+                  </div>
 
-                <p class="card-text text-muted">
-                  {{ comment.text }}
+                  <div>
+                    <p class="text-danger text-bg-red-dim p-1 rounded">
+                      {{ comment.field }}
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <h6 class="card-title mt-3">
+                    {{ comment.title }}
+                  </h6>
+
+                  <p class="card-text text-muted">
+                    {{ comment.text }}
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="d-flex align-items-center mt-4">
+                      <button
+                        v-on:click="comment.likes++"
+                        :class="[
+                          comment.likes > 0 ? 'btn-blue' : 'btn-light',
+                          'btn circle-border mr-3',
+                        ]"
+                      >
+                        <i class="far fa-thumbs-up text-white"></i>
+                      </button>
+                      <p class="text-blue mr-3 text-center" style="width: 30px">
+                        {{ comment.likes }}
+                      </p>
+                      <button
+                        v-on:click="comment.likes--"
+                        :class="[
+                          comment.likes < 0 ? 'btn-danger' : 'btn-light',
+                          'btn circle-border',
+                        ]"
+                      >
+                        <i class="far fa-thumbs-down text-white"></i>
+                      </button>
+                    </div>
+
+                    <div class="d-flex">
+                      <p class="text-muted mr-4">
+                        <i class="fas fa-eye"></i> {{ comment.views }} views
+                      </p>
+                      <p class="text-muted">
+                        <i class="far fa-comment-dots"></i>
+                        {{ comment.comments }} comments
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body bg-blue rounded">
+              <p class="text-white text-center">Start New Discussion</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h6 class="card-title">Discussion</h6>
+              <h6 class="text-blue mt-5">
+                <i class="far fa-comment-dots"></i> All Discussions
+              </h6>
+              <div class="mt-4">
+                <h6><i class="far fa-star"></i> Following</h6>
+              </div>
+
+              <div
+                class="d-flex align-items-center justify-content-between mt-4"
+              >
+                <h6>
+                  <i class="fas fa-globe-americas text-blue"></i> UI/UX Design
+                </h6>
+                <p class="text-blue text-bg-blue-dim pl-2 pr-2 rounded">354</p>
+              </div>
+
+              <div
+                class="d-flex align-items-center justify-content-between mt-3"
+              >
+                <h6>
+                  <i class="fas fa-globe-americas text-yellow"></i> Angular Js
+                </h6>
+                <p class="text-yellow text-bg-yellow-dim pl-2 pr-2 rounded">
+                  684
+                </p>
+              </div>
+
+              <div
+                class="d-flex align-items-center justify-content-between mt-3"
+              >
+                <h6>
+                  <i class="fas fa-globe-americas text-danger"></i> Laravel
+                </h6>
+                <p class="text-danger text-bg-red-dim pl-2 pr-2 rounded">197</p>
+              </div>
+
+              <div
+                class="d-flex align-items-center justify-content-between mt-3"
+              >
+                <h6><i class="fas fa-globe-americas text-success"></i> Vue</h6>
+                <p class="text-green text-bg-green-dim pl-2 pr-2 rounded">
+                  197
+                </p>
+              </div>
+
+              <div
+                class="d-flex align-items-center justify-content-between mt-3"
+              >
+                <h6>
+                  <i class="fas fa-globe-americas text-primary"></i> Bootstrap
+                </h6>
+                <p class="text-primary text-bg-blue-dim pl-2 pr-2 rounded">
+                  845
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h6 class="card-title">Pipular Tags</h6>
+
+              <div class="row m-0">
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  sketch
+                </p>
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  algular
+                </p>
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  bootstrap
+                </p>
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  vue
+                </p>
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  plugin
+                </p>
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  symbols
+                </p>
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  text
+                </p>
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  html 5
+                </p>
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  css 3
+                </p>
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  javascript
                 </p>
 
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="d-flex align-items-center mt-4">
-                    <button
-                      v-on:click="comment.likes++"
-                      :class="[comment.likes > 0 ? 'btn-blue' : 'btn-light' ,'btn circle-border mr-3']"
-                    >
-                      <i class="far fa-thumbs-up text-white"></i>
-                    </button>
-                    <p class="text-blue mr-3 text-center" style="width: 30px" >{{ comment.likes }}</p>
-                    <button
-                      v-on:click="comment.likes--"
-                      :class="[comment.likes < 0 ? 'btn-danger' : 'btn-light' ,'btn circle-border']"
-                    >
-                      <i class="far fa-thumbs-down text-white"></i>
-                    </button>
-                  </div>
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  sketch
+                </p>
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  algular
+                </p>
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  bootstrap
+                </p>
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  vue
+                </p>
 
-                  <div class="d-flex">
-                    <p class="text-muted mr-4">
-                      <i class="fas fa-eye"></i> {{ comment.views }} views
-                    </p>
-                    <p class="text-muted">
-                      <i class="far fa-comment-dots"></i>
-                      {{ comment.comments }} comments
-                    </p>
-                  </div>
-                </div>
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  sketch
+                </p>
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  algular
+                </p>
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  bootstrap
+                </p>
+                <p
+                  class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3"
+                >
+                  vue
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="col-4">
-        <div class="card">
-          <div class="card-body bg-blue rounded">
-            <p class="text-white text-center">Start New Discussion</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h6 class="card-title">Discussion</h6>
-            <h6 class="text-blue mt-5">
-              <i class="far fa-comment-dots"></i> All Discussions
-            </h6>
-            <div class="mt-4">
-              <h6><i class="far fa-star"></i> Following</h6>
-            </div>
-
-            <div class="d-flex align-items-center justify-content-between mt-4">
-              <h6>
-                <i class="fas fa-globe-americas text-blue"></i> UI/UX Design
-              </h6>
-              <p class="text-blue text-bg-blue-dim pl-2 pr-2 rounded">354</p>
-            </div>
-
-            <div class="d-flex align-items-center justify-content-between mt-3">
-              <h6>
-                <i class="fas fa-globe-americas text-yellow"></i> Angular Js
-              </h6>
-              <p class="text-yellow text-bg-yellow-dim pl-2 pr-2 rounded">
-                684
-              </p>
-            </div>
-
-            <div class="d-flex align-items-center justify-content-between mt-3">
-              <h6><i class="fas fa-globe-americas text-danger"></i> Laravel</h6>
-              <p class="text-danger text-bg-red-dim pl-2 pr-2 rounded">197</p>
-            </div>
-
-            <div class="d-flex align-items-center justify-content-between mt-3">
-              <h6><i class="fas fa-globe-americas text-success"></i> Vue</h6>
-              <p class="text-green text-bg-green-dim pl-2 pr-2 rounded">197</p>
-            </div>
-
-            <div class="d-flex align-items-center justify-content-between mt-3">
-              <h6>
-                <i class="fas fa-globe-americas text-primary"></i> Bootstrap
-              </h6>
-              <p class="text-primary text-bg-blue-dim pl-2 pr-2 rounded">845</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h6 class="card-title">Pipular Tags</h6>
-
-            <div class="row m-0">
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                sketch
-              </p>
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                algular
-              </p>
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                bootstrap
-              </p>
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                vue
-              </p>
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                plugin
-              </p>
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                symbols
-              </p>
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                text
-              </p>
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                html 5
-              </p>
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                css 3
-              </p>
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                javascript
-              </p>
-
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                sketch
-              </p>
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                algular
-              </p>
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                bootstrap
-              </p>
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                vue
-              </p>
-
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                sketch
-              </p>
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                algular
-              </p>
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                bootstrap
-              </p>
-              <p class="ml-2 text-blue text-bg-blue-dim rounded pl-1 pr-1 mb-3">
-                vue
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </main-template>
   </div>
 </template>
 
 <script>
+import MainTemplate from "../MainTemplate/MainTemplate.vue";
 export default {
+  components: { MainTemplate },
   name: "Community",
   data() {
     return {

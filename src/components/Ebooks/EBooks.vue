@@ -1,115 +1,94 @@
 <template>
   <div class="e-books">
-    <div class="popular-books-section">
-      <p class="font-weight-bold">Popular E-Book</p>
-      <div class="popular-books row">
-        <div class="col-4" v-for="book in popularBooks" :key="book.id">
-          <div class="card">
-            <div class="card-body d-flex">
-              <div class="pic">
-                <img
-                  width="70"
-                  height="86"
-                  class="book-pic rounded"
-                  :src="book.img"
-                  alt="book"
-                />
-              </div>
-
-              <div class="book-infos ml-3">
-                <h6 class="card-title book-title">
-                  {{ book.name }}
-                </h6>
-
-                <div class="d-flex align-items-center">
-                  <img width="30" :src="book.instructor.img" alt="" />
-                  <h6 class="author-name">{{ book.instructor.name }}</h6>
+    <main-template currentPage="eBook" currentRoute="/ Learn Basic Vue Js">
+      <div class="popular-books-section">
+        <p class="font-weight-bold">Popular E-Book</p>
+        <div class="popular-books row">
+          <div class="col-4" v-for="book in popularBooks" :key="book.id">
+            <div class="card">
+              <div class="card-body d-flex">
+                <div class="pic">
+                  <img
+                    width="70"
+                    height="86"
+                    class="book-pic rounded"
+                    :src="book.img"
+                    alt="book"
+                  />
                 </div>
 
-                <div class="text-yellow">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                <div class="book-infos ml-3">
+                  <h6 class="card-title book-title">
+                    {{ book.name }}
+                  </h6>
 
-      <div class="best-programming">
-        <SectionLine text="Best Programming Books" link="View All" />
-        <div class="books">
-          <div class="d-flex best-books-line">
-            <div class="mt-3 mr-3" v-for="book in bestBooks" :key="book.id">
-              <div class="card">
-                <div class="card-body">
-                  <div class="book-img-container">
-                    <img class="book-img" :src="book.img" alt="book" />
+                  <div class="d-flex align-items-center">
+                    <img width="30" :src="book.instructor.img" alt="" />
+                    <h6 class="author-name">{{ book.instructor.name }}</h6>
                   </div>
 
-                  <div class="mt-2">
-                    <h6 class="card-title line-overflow-2">
-                      {{ book.name }}
-                    </h6>
-
-                    <div class="d-flex">
-                      <img
-                        width="30"
-                        :src="book.instructor.img"
-                        alt="instructor"
-                      />
-                      <p class="font-weight-bold">{{ book.instructor.name }}</p>
-                    </div>
-
-                    <div class="text-yellow mt-1">
-                      <i style="font-size: 0.9rem" class="fas fa-star ml-1"></i>
-                      <i style="font-size: 0.9rem" class="fas fa-star ml-1"></i>
-                      <i style="font-size: 0.9rem" class="fas fa-star ml-1"></i>
-                      <i style="font-size: 0.9rem" class="fas fa-star ml-1"></i>
-                      <i style="font-size: 0.9rem" class="far fa-star ml-1"></i>
-                    </div>
+                  <div class="text-yellow">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="best-programming">
-        <SectionLine text="Best Design Books" link="View All" />
-        <div class="books">
-          <div class="d-flex best-books-line">
-            <div class="mt-3 mr-3" v-for="book in bestBooks" :key="book.id">
-              <div class="card">
-                <div class="card-body">
-                  <div class="book-img-container">
-                    <img class="book-img" :src="book.img" alt="book" />
-                  </div>
-
-                  <div class="mt-2">
-                    <h6 class="card-title line-overflow-2">
-                      {{ book.name }}
-                    </h6>
-
-                    <div class="d-flex">
-                      <img
-                        width="30"
-                        :src="book.instructor.img"
-                        alt="instructor"
-                      />
-                      <p class="font-weight-bold">{{ book.instructor.name }}</p>
+        <div class="best-programming">
+          <SectionLine text="Best Programming Books" link="View All" />
+          <div class="books">
+            <div class="d-flex best-books-line">
+              <div class="mt-3 mr-3" v-for="book in bestBooks" :key="book.id">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="book-img-container">
+                      <img class="book-img" :src="book.img" alt="book" />
                     </div>
 
-                    <div class="text-yellow mt-1">
-                      <i style="font-size: 0.9rem" class="fas fa-star ml-1"></i>
-                      <i style="font-size: 0.9rem" class="fas fa-star ml-1"></i>
-                      <i style="font-size: 0.9rem" class="fas fa-star ml-1"></i>
-                      <i style="font-size: 0.9rem" class="fas fa-star ml-1"></i>
-                      <i style="font-size: 0.9rem" class="far fa-star ml-1"></i>
+                    <div class="mt-2">
+                      <h6 class="card-title line-overflow-2">
+                        {{ book.name }}
+                      </h6>
+
+                      <div class="d-flex">
+                        <img
+                          width="30"
+                          :src="book.instructor.img"
+                          alt="instructor"
+                        />
+                        <p class="font-weight-bold">
+                          {{ book.instructor.name }}
+                        </p>
+                      </div>
+
+                      <div class="text-yellow mt-1">
+                        <i
+                          style="font-size: 0.9rem"
+                          class="fas fa-star ml-1"
+                        ></i>
+                        <i
+                          style="font-size: 0.9rem"
+                          class="fas fa-star ml-1"
+                        ></i>
+                        <i
+                          style="font-size: 0.9rem"
+                          class="fas fa-star ml-1"
+                        ></i>
+                        <i
+                          style="font-size: 0.9rem"
+                          class="fas fa-star ml-1"
+                        ></i>
+                        <i
+                          style="font-size: 0.9rem"
+                          class="far fa-star ml-1"
+                        ></i>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -117,17 +96,75 @@
             </div>
           </div>
         </div>
+
+        <div class="best-programming">
+          <SectionLine text="Best Design Books" link="View All" />
+          <div class="books">
+            <div class="d-flex best-books-line">
+              <div class="mt-3 mr-3" v-for="book in bestBooks" :key="book.id">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="book-img-container">
+                      <img class="book-img" :src="book.img" alt="book" />
+                    </div>
+
+                    <div class="mt-2">
+                      <h6 class="card-title line-overflow-2">
+                        {{ book.name }}
+                      </h6>
+
+                      <div class="d-flex">
+                        <img
+                          width="30"
+                          :src="book.instructor.img"
+                          alt="instructor"
+                        />
+                        <p class="font-weight-bold">
+                          {{ book.instructor.name }}
+                        </p>
+                      </div>
+
+                      <div class="text-yellow mt-1">
+                        <i
+                          style="font-size: 0.9rem"
+                          class="fas fa-star ml-1"
+                        ></i>
+                        <i
+                          style="font-size: 0.9rem"
+                          class="fas fa-star ml-1"
+                        ></i>
+                        <i
+                          style="font-size: 0.9rem"
+                          class="fas fa-star ml-1"
+                        ></i>
+                        <i
+                          style="font-size: 0.9rem"
+                          class="fas fa-star ml-1"
+                        ></i>
+                        <i
+                          style="font-size: 0.9rem"
+                          class="far fa-star ml-1"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </main-template>
   </div>
 </template>
 
 <script>
 import logo from "../../assets/logo.png";
 import SectionLine from "../SectionLine.vue";
+import MainTemplate from '../MainTemplate/MainTemplate.vue'
 
 export default {
-  components: { SectionLine },
+  components: { SectionLine, MainTemplate },
   name: "EBooks",
   data() {
     return {
@@ -271,10 +308,9 @@ export default {
 </script>
 
 <style scoped>
-
 .best-programming .books {
-    overflow-x: auto;
-} 
+  overflow-x: auto;
+}
 
 .best-programming .books::-webkit-scrollbar {
   width: 0;

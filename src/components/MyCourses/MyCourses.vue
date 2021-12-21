@@ -1,71 +1,89 @@
 <template>
   <div>
-    <div
-      class="my-courses-nav d-flex align-items-center justify-content-between"
-    >
-      <p class="text-blue">
-        Courses for <span class="font-weight-bold">"All Courses"</span>
-      </p>
-      <div class="my-course-nav-right d-flex align-items-center">
-        <p
-          class="text-muted d-flex align-items-center bg-white pl-2 pr-2 rounded"
-        >
-          Sort By:
-          <span class="font-weight-bold text-dark p-2">
-            <select
-              class="my-form-control-nav ml-2 font-weight-bold text-dark my-select"
-              id="exampleFormControlSelect2"
-            >
-              <option>All Catagories</option>
-              <option>Popular</option>
-              <option>Trending</option>
-            </select>
-          </span>
+    <main-template currentPage="My Courses">
+      <div
+        class="my-courses-nav d-flex align-items-center justify-content-between"
+      >
+        <p class="text-blue">
+          Courses for <span class="font-weight-bold">"All Courses"</span>
         </p>
-        <button class="btn my-courses-icon-inactive bg-white ml-3 mr-3">
-          <i class="fas fa-filter"></i>
-        </button>
-        <button v-on:click="list = true" :class="[list ? 'my-courses-icon-active' : 'my-courses-icon-inactive bg-white', 'btn']">
-          <i class="fas fa-bars"></i>
-        </button>
-        <button v-on:click="list = false" :class="[list ? 'my-courses-icon-inactive bg-white' : 'my-courses-icon-active', 'btn']">
-          <i class="fab fa-microsoft"></i>
-        </button>
-      </div>
-    </div>
-
-    <template v-if="list">
-      <div class="my-courses-titles d-flex p-3">
-        <div class="d-flex align-items-center course-name">
-          <input type="checkbox" style="zoom: 1.5" />
-
-          <p class="course-name-title ml-2">Course Name</p>
+        <div class="my-course-nav-right d-flex align-items-center">
+          <p
+            class="text-muted d-flex align-items-center bg-white pl-2 pr-2 rounded"
+          >
+            Sort By:
+            <span class="font-weight-bold text-dark p-2">
+              <select
+                class="my-form-control-nav ml-2 font-weight-bold text-dark my-select"
+                id="exampleFormControlSelect2"
+              >
+                <option>All Catagories</option>
+                <option>Popular</option>
+                <option>Trending</option>
+              </select>
+            </span>
+          </p>
+          <button class="btn my-courses-icon-inactive bg-white ml-3 mr-3">
+            <i class="fas fa-filter"></i>
+          </button>
+          <button
+            v-on:click="list = true"
+            :class="[
+              list
+                ? 'my-courses-icon-active'
+                : 'my-courses-icon-inactive bg-white',
+              'btn',
+            ]"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <button
+            v-on:click="list = false"
+            :class="[
+              list
+                ? 'my-courses-icon-inactive bg-white'
+                : 'my-courses-icon-active',
+              'btn',
+            ]"
+          >
+            <i class="fab fa-microsoft"></i>
+          </button>
         </div>
-
-        <p class="catagory-title catagory">Catagory</p>
-
-        <p class="instructor-title instructor">Instrucator</p>
-
-        <p class="description-title description">Description</p>
-
-        <p class="progress-title my-progress">Progress</p>
-
-        <p class="status-title status">Status</p>
-
-        <p class="action-title action">Action</p>
       </div>
-      <template v-for="course in courses">
-        <ListCard class="mb-2" :course="course" :key="course.id" />
+
+      <template v-if="list">
+        <div class="my-courses-titles d-flex p-3">
+          <div class="d-flex align-items-center course-name">
+            <input type="checkbox" style="zoom: 1.5" />
+
+            <p class="course-name-title ml-2">Course Name</p>
+          </div>
+
+          <p class="catagory-title catagory">Catagory</p>
+
+          <p class="instructor-title instructor">Instrucator</p>
+
+          <p class="description-title description">Description</p>
+
+          <p class="progress-title my-progress">Progress</p>
+
+          <p class="status-title status">Status</p>
+
+          <p class="action-title action">Action</p>
+        </div>
+        <template v-for="course in courses">
+          <ListCard class="mb-2" :course="course" :key="course.id" />
+        </template>
       </template>
-    </template>
 
-    <template v-else>
-      <div class="row mt-5">
-        <div class="col-3" v-for="course in courses" :key="course.id">
-          <GridCard class="mb-2" :course="course" :key="course.id" />
+      <template v-else>
+        <div class="row mt-5">
+          <div class="col-3" v-for="course in courses" :key="course.id">
+            <GridCard class="mb-2" :course="course" :key="course.id" />
+          </div>
         </div>
-      </div>
-    </template>
+      </template>
+    </main-template>
   </div>
 </template>
 
@@ -78,10 +96,11 @@ import dimond from "../../assets/dimond.png";
 import logo from "../../assets/logo.png";
 import ListCard from "../ListCard.vue";
 import GridCard from "../GridCard.vue";
+import MainTemplate from '../MainTemplate/MainTemplate.vue'
 
 export default {
   name: "MyCourses",
-  components: { ListCard, GridCard },
+  components: { ListCard, GridCard, MainTemplate },
   data() {
     return {
       list: true,

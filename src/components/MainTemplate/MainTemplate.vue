@@ -1,6 +1,6 @@
 <template>
-  <div class="template-container container-fluid p-4">
-    <div class="template-top">
+  <div class="template-container p-0 m-0">
+    <div class="template-top m-0 p-0">
       <Navbar :currentPage="currentPage" :currentRoute="currentRoute" />
     </div>
 
@@ -64,4 +64,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.template-container {
+  padding: 42px 40px !important;
+}
+
+</style>
