@@ -750,22 +750,9 @@ export default {
   transform: rotateX(180deg);
 }
 
-.my-nav-item {
-  margin-right: 50px !important;
-  padding: 20px 20px 15px 20px;
-}
-
-.my-nav-item:hover {
-  cursor: pointer;
-}
-
 .my-ul {
   line-height: 38px;
   margin-left: 23px !important;
-}
-
-.current-nav {
-  border-bottom: 3px solid #2f3ced;
 }
 
 .faq-question-title {

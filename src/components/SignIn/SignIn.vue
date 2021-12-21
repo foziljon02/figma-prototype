@@ -22,7 +22,7 @@
       logo="fab fa-google text-danger" 
       text="Continue with Google" />
 
-    <Button btnClass="btn btn-primary btn-block" logo="fab fa-facebook-f text-white" text="Continue with Facebook" />
+    <Button btnClass="btn btn-blue text-white btn-block" logo="fab fa-facebook-f text-white" text="Continue with Facebook" />
 
     <form action="" class="mt-2">
       <Fieldset legend="OR" />
@@ -48,7 +48,7 @@
       </div>
 
       <div v-if="signIn" class="btn-container mt-4">
-        <Button text="Sign In" btnClass="btn btn-primary btn-block p-2 mt-2" />
+        <Button text="Sign In" btnClass="btn btn-blue text-white btn-block p-2 mt-2" />
       </div>
 
       <div v-else class="btn-container mt-4">

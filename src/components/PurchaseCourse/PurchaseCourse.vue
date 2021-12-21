@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <div class="purchase-courses row">
+    <div class="purchase-courses row mt-4">
       <div
         class="course-card card col-3 my-col-3 p-0 pb-2"
         v-for="course in courses"
@@ -59,7 +59,9 @@
         <div class="course-background rounded pt-2">
           <div class="card-body">
             <div class="course-background-elements d-flex">
-              <div class="icon d-flex align-items-center justify-content-center">
+              <div
+                class="icon d-flex align-items-center justify-content-center"
+              >
                 <img width="40" :src="course.technology.icon" alt="icon" />
               </div>
               <h4 class="card-title mb-2">
@@ -87,7 +89,15 @@
                 <i class="far fa-star"></i>
               </div>
 
-              <div class="price">
+              <div
+                :class="[
+                  course.id % 2 == 0
+                    ? 'text-danger text-bg-red-dim'
+                    : 'text-blue text-bg-blue-dim',
+                  'price',
+
+                ]"
+              >
                 ${{ course.price }}
               </div>
             </div>
@@ -108,7 +118,7 @@ export default {
   name: "PusrchaseCourse",
   data() {
     return {
-      list: true,
+      list: false,
       courses: [
         {
           id: 0,
@@ -364,5 +374,4 @@ export default {
   background: white;
   padding-top: 10px;
 }
-
 </style>

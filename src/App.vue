@@ -3,8 +3,14 @@
     <SignIn />
     <main-template currentPage="Dashboard"><Dashboard /></main-template>
     <main-template currentPage="My Courses"><MyCourses /></main-template>
-    <main-template currentPage="My Courses " currentRoute='/ Web Development'><CourseDetails /></main-template>
+    <main-template currentPage="My Courses" currentRoute='/ Web Development'><CourseDetails /></main-template>
     <main-template currentPage="Purchase Courses"> <PurchaseCourse /> </main-template>
+    <main-template currentPage="eBook"> <EBooks /> </main-template>
+    <main-template currentPage="eBook" currentRoute="/ Learn Basic Vue Js" > <EbookDetail /> </main-template>
+    <main-template currentPage="Copmleted Courses"> <CompletedCourses /> </main-template>
+    <main-template currentPage="Code Challenges"> <CodeChallenge /> </main-template>
+    <main-template currentPage="Community"> <Community /> </main-template>
+    <main-template currentPage="Profile"><Profile /> </main-template>
   </div>
 </template>
 
@@ -15,6 +21,12 @@ import Dashboard from "./components/Dashboard/Dashboard.vue";
 import MyCourses from './components/MyCourses/MyCourses.vue';
 import CourseDetails from './components/CourseDetails/CourseDetails.vue';
 import PurchaseCourse from './components/PurchaseCourse/PurchaseCourse.vue';
+import EBooks from './components/Ebooks/EBooks.vue';
+import EbookDetail from './components/Ebooks/EbookDetail.vue';
+import CompletedCourses from './components/CompletedCourses/CompletedCourses.vue';
+import CodeChallenge from './components/CodeChallenge/CodeChallenge.vue';
+import Community from './components/Community/Community.vue';
+import Profile from './components/Profile/Profile.vue';
 
 export default {
   name: "App",
@@ -25,6 +37,12 @@ export default {
     MyCourses,
     CourseDetails,
     PurchaseCourse,
+    EBooks,
+    EbookDetail,
+    CompletedCourses,
+    CodeChallenge,
+    Community,
+    Profile,
   },
   data() {
     return {
@@ -39,6 +57,7 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 p {
@@ -139,6 +158,21 @@ background: #57d09477;
 .circle-border {
   border-radius: 50%;
 }
+
+.my-nav-item {
+  margin-right: 50px !important;
+  padding: 20px 20px 15px 20px;
+}
+
+.my-nav-item:hover {
+  cursor: pointer;
+}
+
+
+.current-nav {
+  border-bottom: 3px solid #2f3ced;
+}
+
 
 
 </style>
