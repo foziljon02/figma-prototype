@@ -5,7 +5,7 @@
     </div>
 
     <!-- Body Part Start -->
-    <div class="template-body row mt-5">
+    <div class="template-body row">
       <div class="menus-container col-2">
         {{ currentOPage }}
         <Menu 
@@ -67,6 +67,10 @@ export default {
 <style scoped>
 .template-container {
   padding: 42px 40px !important;
+}
+
+.template-body {
+  margin-top: 56px;
 }
 
 </style>

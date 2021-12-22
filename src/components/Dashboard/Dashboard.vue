@@ -11,7 +11,6 @@
               v-for="course in coursesInProgress"
               v-bind:key="course.id"
               class="card col-4 my-col-4"
-              style="font-size: 1rem"
             >
               <CourseCard :course="course" />
             </div>
@@ -40,7 +39,7 @@
           </div>
 
           <div v-for="mentor in mentors" :key="mentor.id" class="mentors-cards">
-            <Mentor class="mb-2" :mentor="mentor" />
+            <Mentor :mentor="mentor" />
           </div>
         </div>
       </div>
@@ -179,4 +178,6 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

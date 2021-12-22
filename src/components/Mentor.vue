@@ -1,17 +1,18 @@
 <template>
   <div class="card my-card">
     <div class="card-body centerify equal-size text-center">
-      <div class="profile d-flex align-items-center">
+      <div class="profile d-flex align-items-center my-font">
         <img
-          width="50"
+          width="30"
+          height="30"
           class="rounded-img"
           src="https://thispersondoesnotexist.com/image"
           alt="person"
         />
-        <p class="font-weight-bold ml-2">{{ mentor.name }}</p>
+        <p class="name font-weight-bold ml-2">{{ mentor.name }}</p>
       </div>
 
-      <div class="speciality">
+      <div class="speciality my-font">
         <span
           :class="[
             mentor.industry == 'UI/UX Design'
@@ -23,7 +24,9 @@
             mentor.industry == 'Backend Development'
               ? 'text-bg-blue-dim text-blue'
               : '',
-            mentor.industry == 'Android Development' ? 'text-bg-green-dim text-success' : '',
+            mentor.industry == 'Android Development'
+              ? 'text-bg-green-dim text-success'
+              : '',
             'rounded p-1 pl-2 pr-2',
           ]"
         >
@@ -31,19 +34,19 @@
         </span>
       </div>
 
-      <div class="job-title">
+      <div class="job-title my-font">
         <p>{{ mentor.jobTitle }}</p>
       </div>
 
-      <div class="num-of-courses">
+      <div class="num-of-courses my-font">
         <p>{{ mentor.numOfCourses }} Courses</p>
       </div>
 
-      <div class="followers">
+      <div class="followers my-font">
         <p>{{ mentor.numOfFollowers }} followers</p>
       </div>
 
-      <div class="rating d-flex align-items-center">
+      <div class="rating d-flex align-items-center my-font">
         <i class="fas fa-star text-yellow"></i>
         <p class="ml-1">{{ mentor.rating }}</p>
       </div>
@@ -72,12 +75,31 @@ export default {
 </script>
 
 <style scoped>
+.my-font {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 24px;
+}
+
+.name {
+  margin-left: 14px !important;
+}
+
+.card-body {
+  padding: 23px;
+}
+
 .profile {
-  width: 180px;
+  width: 140px;
 }
 
 .speciality {
-  width: 200px;
+  width: 180px;
+  line-height: 14px;
+  line-height: 14px;
+  color: #ff6868;
 }
 
 .job-title {
